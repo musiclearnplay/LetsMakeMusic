@@ -1,4 +1,4 @@
-/* Music Hub data: songs, chords, pathways. Melodies: "E4:2" = note:beats (1 beat default, octave 4 default), R = rest, | ignored. */
+/* LetsMakeMusic data: songs, chords, pathways. Melodies: "E4:2" = note:beats (1 beat default, octave 4 default), R = rest, | ignored. */
 'use strict';
 const SANDBOX_URL='https://claude.ai/artifact/PNyfn9UntRH1JvXoTceBzC';
 
@@ -8,9 +8,9 @@ const MELODIES=[
   mel:'G E G:.5 G:.5 E | G:.5 G:.5 E:.5 A:.5 G:.5 G:.5 E',ch:'C C'},
  {id:'hot-cross',t:'Hot Cross Buns',by:'Traditional',lvl:1,bpm:96,key:'C',tags:'do re mi three notes',
   mel:'E D C:2 | E D C:2 | C:.5 C:.5 C:.5 C:.5 D:.5 D:.5 D:.5 D:.5 | E D C:2',ch:'C C C_G C'},
- {id:'three-note-rock',t:'Three-Note Rock',by:'Original for the Hub',tier:'orig',lvl:1,bpm:104,key:'G',tags:'B A G three notes',
+ {id:'three-note-rock',t:'Three-Note Rock',by:'Original for LetsMakeMusic',tier:'orig',lvl:1,bpm:104,key:'G',tags:'B A G three notes',
   mel:'B B A A | G G A:2 | B A G A | B:2 G:2 | B B A A | G G A:2 | B:.5 B:.5 A G A | G:4',ch:'G D G D G D G_D G'},
- {id:'open-string-groove',t:'Open String Groove',by:'Original for the Hub',tier:'orig',lvl:1,bpm:100,key:'C',tags:'ukulele open strings',
+ {id:'open-string-groove',t:'Open String Groove',by:'Original for LetsMakeMusic',tier:'orig',lvl:1,bpm:100,key:'C',tags:'ukulele open strings',
   mel:'C C E E | A A E:2 | C E A E | C:4 | A A E E | C C E:2 | A E C E | C:4',ch:'C C Am Am F F G C'},
  {id:'mary-lamb',t:'Mary Had a Little Lamb',by:'Traditional',lvl:1,bpm:104,key:'C',tags:'do re mi so',
   mel:'E D C D | E E E:2 | D D D:2 | E G G:2 | E D C D | E E E E | D D E D | C:4',ch:'C C G C C C G C'},
@@ -42,7 +42,7 @@ const MELODIES=[
  {id:'saints',t:'When the Saints Go Marching In',by:'Traditional American',lvl:2,bpm:132,key:'C',tags:'jazz',
   mel:'R C E F | G:4 | R C E F | G:4 | R C E F | G:2 E:2 | C:2 E:2 | D:4 | R E E D | C:3 C | E:2 G:2 | G F:3 | R:2 E F | G:2 E:2 | C:2 D:2 | C:4',
   ch:'C C C C C C C G G C C F F C G C'},
- {id:'hawker-hop',t:'Hawker Centre Hop',by:'Original for the Hub',tier:'orig',lvl:2,bpm:120,key:'C',tags:'pentatonic singapore angklung',
+ {id:'hawker-hop',t:'Hawker Centre Hop',by:'Original for LetsMakeMusic',tier:'orig',lvl:2,bpm:120,key:'C',tags:'pentatonic singapore angklung',
   mel:'C D E G | A:2 G:2 | E G A G | E:2 D:2 | C D E G | A:2 C5:2 | A G E D | C:4',ch:'C C Am Am C C F_G C'},
  {id:'jingle',t:'Jingle Bells (chorus)',by:'James Pierpont',lvl:2,bpm:120,key:'C',tags:'seasonal',
   mel:'E E E:2 | E E E:2 | E G C:1.5 D:.5 | E:4 | F F F:1.5 F:.5 | F E E E:.5 E:.5 | G G F D | C:4',ch:'C C C C F C G C'},
@@ -62,9 +62,9 @@ const MELODIES=[
   ch:'C G G C C G G C'},
  {id:'mountain-king',t:'In the Hall of the Mountain King',by:'Edvard Grieg',lvl:3,bpm:112,key:'Am',tags:'classical minor',
   mel:'A3:.5 B3:.5 C:.5 D:.5 E:.5 C:.5 E | D#:.5 B3:.5 D# D:.5 B3:.5 D | A3:.5 B3:.5 C:.5 D:.5 E:.5 C:.5 E:.5 A:.5 | G:.5 E:.5 C:.5 E:.5 G:2',ch:'Am Am Am C'},
- {id:'monsoon-minor',t:'Monsoon Minor',by:'Original for the Hub',tier:'orig',lvl:3,bpm:96,key:'Am',tags:'minor singapore',
+ {id:'monsoon-minor',t:'Monsoon Minor',by:'Original for LetsMakeMusic',tier:'orig',lvl:3,bpm:96,key:'Am',tags:'minor singapore',
   mel:'A3 C E:2 | D C B3:2 | A3 C E A | G:2 E:2 | F E D C | B3 C D:2 | E D C B3 | A3:4',ch:'Am Am Am C F G E Am'},
- {id:'mrt-blues',t:'MRT Blues',by:'Original for the Hub',tier:'orig',lvl:3,bpm:108,key:'C',tags:'12-bar blues singapore',
+ {id:'mrt-blues',t:'MRT Blues',by:'Original for LetsMakeMusic',tier:'orig',lvl:3,bpm:108,key:'C',tags:'12-bar blues singapore',
   mel:'C Eb F:2 | C Eb F:2 | C Eb F G | Eb:2 C:2 | F Ab Bb:2 | F Ab Bb:2 | C Eb F G | Eb:2 C:2 | G:2 F:2 | F:2 Eb:2 | C Eb F Eb | C:4',
   ch:'C C C C F F C C G F C C'},
  {id:'happy-birthday',t:'Happy Birthday to You',by:'Patty and Mildred Hill',lvl:3,bpm:108,key:'C',meter:3,pickup:1,
@@ -97,9 +97,9 @@ Chan Mali Chan|Traditional Malay|C|120|s2|All:C C G7 G7 G7 G7 C C
 Burung Kakak Tua|Traditional Indonesian|C|120|s6|All:C C G7 G7 G7 G7 C C|3
 12-Bar Blues in C|Blues form|C|108|s2|All:C C C C F F C C G F C C
 12-Bar Blues in A|Blues form|A|108|s2|All:A A A A D D A A E D A A
-One-Chord Jam|Hub warm-up|C|100|s1|All:C C C C
-The Four-Chord Loop|Hub warm-up|C|96|s3|All:C G Am F
-The Doo-Wop Loop|Hub warm-up|C|100|s2|All:C Am F G`;
+One-Chord Jam|LetsMakeMusic warm-up|C|100|s1|All:C C C C
+The Four-Chord Loop|LetsMakeMusic warm-up|C|96|s3|All:C G Am F
+The Doo-Wop Loop|LetsMakeMusic warm-up|C|100|s2|All:C Am F G`;
 const POP_CHARTS=`Let It Be|The Beatles|C|72|s1|Verse:C G Am F C G F C;Chorus:Am G F C C G F C
 I'm Yours|Jason Mraz|C|76|s3|All:C G Am F
 Riptide|Vance Joy|Am|100|s3|Verse:Am G C C;Bridge:Am G C F

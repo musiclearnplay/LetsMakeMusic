@@ -1,4 +1,4 @@
-/* Music Hub core: helpers, music theory, audio engine, notation drawing. */
+/* LetsMakeMusic core: helpers, music theory, audio engine, notation drawing. */
 'use strict';
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));

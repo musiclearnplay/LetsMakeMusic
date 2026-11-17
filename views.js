@@ -1,4 +1,4 @@
-/* Music Hub views: Home, Practice, Create, Tools, Songs. */
+/* LetsMakeMusic views: Home, Practice, Create, Tools, Songs. */
 'use strict';
 const S={
   room:'home', inst:store.get('inst','uke'), done:store.get('done',{}),
@@ -162,7 +162,7 @@ function vSongs(){
   <section class="card"><div class="row"><input class="field" id="q" data-in="q" type="search" placeholder="Search a song, artist or chord" value="${esc(f.q)}" style="flex:1;min-width:200px" aria-label="Search songs"></div>
   <div class="row">${chip('All','fkind',f.kind==='all','data-k="all"')}${chip('Full notation','fkind',f.kind==='mel','data-k="mel"')}${chip('Chord charts','fkind',f.kind==='chart','data-k="chart"')}
   <span class="muted small">Level</span>${[0,1,2,3,4].map(l=>chip(l?String(l):'Any','flvl',f.lvl===l,`data-l="${l}"`)).join('')}</div>
-  <p class="note"><b>Full notation</b> songs are traditional, classical or written for the Hub, so you get tab, staff, numbers and solfège. <b>Chord charts</b> show the chords and form of well-known songs in an easy key. They have no lyrics or melody, so play along with the recording.</p></section>
+  <p class="note"><b>Full notation</b> songs are traditional, classical or written for LetsMakeMusic, so you get tab, staff, numbers and solfège. <b>Chord charts</b> show the chords and form of well-known songs in an easy key. They have no lyrics or melody, so play along with the recording.</p></section>
   <div class="songlist" id="songlist">${songList()}</div>`;
 }
 const MODES=[['letters','Letters'],['solfege','Solfège'],['numbers','Numbers'],['staff','Staff'],['uke','Ukulele tab'],['gtr','Guitar tab']];

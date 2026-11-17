@@ -1,4 +1,4 @@
-/* Music Hub games: Note Slide, Key Finder, Note Values, Fill the Bar, Tap the Rhythm, Major or Minor, plus the ear and reading games. No scores are kept. */
+/* LetsMakeMusic games: Note Slide, Key Finder, Note Values, Fill the Bar, Tap the Rhythm, Major or Minor, plus the ear and reading games. No scores are kept. */
 'use strict';
 S.games={tab:'slide'};
 const GAMES=[['slide','Note Slide'],['keys','Key Finder'],['reader','Name the note'],['values','Note values'],['fill','Fill the bar'],['tap','Tap the rhythm'],['rhythm','Rhythm ears'],['pitch','Pitch ears'],['chord','Major or minor']];
