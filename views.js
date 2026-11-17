@@ -24,10 +24,10 @@ A.stop=()=>stopAll();
 /* ================= HOME ================= */
 function vHome(){
   const full=SONGS.filter(s=>s.kind==='mel').length, charts=SONGS.length-full;
-  return `<section class="hero"><span class="eyebrow" style="color:#9BA8C4">Grades 3 to 6</span><h1>Pick a room. Make some music.</h1>
+  return `<section class="hero"><h1>Learn what you want to, when you're ready</h1>
   <p>Work at your own pace. Choose an instrument, tick off what you can do, then try the next thing.</p></section>
   <div class="doors">
-    <button class="door d-practice" data-act="nav" data-v="practice"><b>Practice</b><span>Skill paths for ukulele, guitar, piano, angklung, voice, drums and rock band.</span><em>7 instruments, 4 levels each</em></button>
+    <button class="door d-practice" data-act="nav" data-v="practice"><b>Practice</b><span>Skill paths for ukulele, guitar, piano, tuned percussion, voice, drums and rock band.</span><em>7 instruments, 4 levels each</em></button>
     <button class="door d-games" data-act="nav" data-v="games"><b>Games</b><span>Note Slide, Key Finder, Fill the Bar, Tap the Rhythm and more.</span><em>${GAMES.length} games</em></button>
     <button class="door d-create" data-act="nav" data-v="create"><b>Create</b><span>Song Maker, Beat Maker, Chord Jam and Rhythm Builder.</span><em>4 music makers</em></button>
     <button class="door d-tools" data-act="nav" data-v="tools"><b>Tools</b><span>Metronome, tuner, group maker and timer.</span><em>4 classroom tools</em></button>
@@ -91,10 +91,10 @@ function benchChords(inst){
 }
 A.bchord=el=>{S.bench.chord=el.dataset.c; stopAll(); render(); playChordNow(S.bench.chord);};
 A.hear=el=>playChordNow(el.dataset.c);
-function playChordNow(c){ if(S.inst==='piano') chordMidis(c).forEach(m=>play(m+12,0,1.2,'keys',.45)); else strum(c,0,'D',.45); }
+function playChordNow(c){ const k=S.inst==='guitar'?'gtr':S.inst==='uke'?'uke':null; if(S.inst==='piano') chordMidis(c).forEach(m=>play(m+12,0,1.2,'keys',.45)); else strum(c,0,'D',.45,k); }
 A.drill=()=>{
   const a=S.bench.chord, b=$('#drillB').value, seq=[a,b];
-  startLoop({steps:8,loop:true,dur:()=>1,step:(i,t)=>{drum(i%4===0?'click1':'click',t); if(i%4===0){const c=seq[i/4]; if(S.inst==='piano') chordMidis(c).forEach(m=>play(m+12,t,1.5,'keys',.4)); else strum(c,t,'D',.42);}},
+  startLoop({steps:8,loop:true,dur:()=>1,step:(i,t)=>{drum(i%4===0?'click1':'click',t); if(i%4===0){const c=seq[i/4]; if(S.inst==='piano') chordMidis(c).forEach(m=>play(m+12,t,1.5,'keys',.4)); else strum(c,t,'D',.42,S.inst==='guitar'?'gtr':'uke');}},
     ui:i=>{const n=$('#drillNow'); if(n) n.textContent=`Play ${seq[Math.floor(i/4)]}   ·   beat ${i%4+1}   ·   next: ${seq[1-Math.floor(i/4)]}`;},onStop:()=>{const n=$('#drillNow'); if(n) n.textContent='';}});
 };
 function kbHtml(lit,act){
@@ -114,8 +114,8 @@ A.key=el=>play(+el.dataset.m,0,.8,'keys',.5);
 A.pad=el=>drum(el.dataset.k);
 function benchBars(){
   const notes=[60,62,64,65,67,69,71,72];
-  return `<h3>Angklung and bars</h3><p class="small muted">Tap a bar to play it. The number is the angklung number. The word is solfège.</p>
-  <div class="row">${chip('Angklung shake','bsnd',S.bench.snd==='angklung','data-s="angklung"')}${chip('Xylophone','bsnd',S.bench.snd==='mallet','data-s="mallet"')}</div>
+  return `<h3>Tuned percussion</h3><p class="small muted">Tap a bar to play it. The number is the note number. The word is solfège.</p>
+  <div class="row">${chip('Shaken','bsnd',S.bench.snd==='angklung','data-s="angklung"')}${chip('Xylophone','bsnd',S.bench.snd==='mallet','data-s="mallet"')}</div>
   <div class="barset">${notes.map((m,i)=>{const L=NN[m%12];return `<button class="${pcClass(L)}" style="height:${170-i*12}px" data-act="bar" data-m="${m}">${i===7?"1'":i+1}<small>${L} · ${SOLF[m%12]}</small></button>`;}).join('')}</div>
   <div class="row"><button class="btn go" data-act="skill" data-go="songs:mel:1:numbers">Play a song from numbers</button></div>`;
 }
@@ -172,7 +172,7 @@ function vSong(s){
   if(s.kind==='mel'){
     const mode=MODES.some(m=>m[0]===f.mode)?f.mode:'letters';
     return head+`<section class="card"><div class="row"><button class="btn go" data-act="playMel">Play</button>${tempo}</div>
-    <div class="row"><label class="ctl" for="snd">Sound</label><select class="field" id="snd" data-in="snd">${[['keys','Piano'],['mallet','Xylophone'],['angklung','Angklung'],['pluck','Guitar'],['synth','Synth']].map(o=>`<option value="${o[0]}" ${f.snd===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>
+    <div class="row"><label class="ctl" for="snd">Sound</label><select class="field" id="snd" data-in="snd">${[['keys','Piano'],['mallet','Xylophone'],['angklung','Shaken'],['pluck','Guitar'],['synth','Synth']].map(o=>`<option value="${o[0]}" ${f.snd===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>
     ${s.ch?chip('Backing chords','tog',f.backing,'data-k="backing"'):''}${chip('Click','tog',f.click,'data-k="click"')}</div></section>
     <section class="card"><div class="row">${MODES.map(m=>chip(m[1],'mode',m[0]===mode,`data-m="${m[0]}"`)).join('')}</div><div id="score">${melBody(s,mode)}</div></section>`;
   }
@@ -195,13 +195,13 @@ function melBody(s,mode){
   const lab=e=>mode==='solfege'?SOLF[(e.midi-d+120)%12]:mode==='numbers'?NUMS[(e.midi-d+120)%12]:e.L+(e.acc==='#'?'♯':e.acc==='b'?'♭':'');
   const mark=e=>{ if(mode==='letters'||e.rest) return ''; const rel=e.midi-ref; return rel>=12?"'":rel<0?',':''; };
   return `<div class="notes">${bars.map(b=>b.map(e=>`<span class="n ${e.rest?'rest':pcClass(e.L)}" data-n="${e.i}" style="width:${Math.round(18+e.dur*24)}px">${e.rest?'–':lab(e)+mark(e)}</span>`).join('')).join('<span class="bar-sep"></span>')}</div>
-  <p class="small muted">Wider boxes are longer notes. ${mode==='letters'?'':'A mark after the name (\') means the high one. A comma means the low one.'} ${mode==='numbers'?'Numbers match the angklung: 1 is do.':''}</p>`;
+  <p class="small muted">Wider boxes are longer notes. ${mode==='letters'?'':'A mark after the name (\') means the high one. A comma means the low one.'} ${mode==='numbers'?'Numbers show scale steps: 1 is do.':''}</p>`;
 }
 A.mode=el=>{S.songs.mode=el.dataset.m; $('#score').innerHTML=melBody(songById(S.songs.open),S.songs.mode); $$('[data-act="mode"]').forEach(b=>b.setAttribute('aria-pressed',b===el));};
 A.tog=el=>{const k=el.dataset.k; S.songs[k]=!S.songs[k]; el.setAttribute('aria-pressed',S.songs[k]);};
 A.shift=el=>{S.songs.shift=+el.dataset.n; const was=!!LOOP; stopAll(); render(); if(was) A.playChart();};
 A.cinst=el=>{S.songs.inst=el.dataset.i; render();};
-A.hearC=el=>{ if(S.songs.inst==='piano') chordMidis(el.dataset.c).forEach(m=>play(m+12,0,1.2,'keys',.45)); else strum(el.dataset.c,0,'D',.45); };
+A.hearC=el=>{ if(S.songs.inst==='piano') chordMidis(el.dataset.c).forEach(m=>play(m+12,0,1.2,'keys',.45)); else strum(el.dataset.c,0,'D',.45,S.songs.inst); };
 I.bpm=el=>{S.songs.bpm=+el.value; $('#bpmV').textContent=el.value;};
 I.snd=el=>{S.songs.snd=el.value;};
 A.playMel=()=>{

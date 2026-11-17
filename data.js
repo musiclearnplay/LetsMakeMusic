@@ -42,7 +42,7 @@ const MELODIES=[
  {id:'saints',t:'When the Saints Go Marching In',by:'Traditional American',lvl:2,bpm:132,key:'C',tags:'jazz',
   mel:'R C E F | G:4 | R C E F | G:4 | R C E F | G:2 E:2 | C:2 E:2 | D:4 | R E E D | C:3 C | E:2 G:2 | G F:3 | R:2 E F | G:2 E:2 | C:2 D:2 | C:4',
   ch:'C C C C C C C G G C C F F C G C'},
- {id:'hawker-hop',t:'Hawker Centre Hop',by:'Original for LetsMakeMusic',tier:'orig',lvl:2,bpm:120,key:'C',tags:'pentatonic singapore angklung',
+ {id:'hawker-hop',t:'Hawker Centre Hop',by:'Original for LetsMakeMusic',tier:'orig',lvl:2,bpm:120,key:'C',tags:'pentatonic singapore tuned percussion',
   mel:'C D E G | A:2 G:2 | E G A G | E:2 D:2 | C D E G | A:2 C5:2 | A G E D | C:4',ch:'C C Am Am C C F_G C'},
  {id:'jingle',t:'Jingle Bells (chorus)',by:'James Pierpont',lvl:2,bpm:120,key:'C',tags:'seasonal',
   mel:'E E E:2 | E E E:2 | E G C:1.5 D:.5 | E:4 | F F F:1.5 F:.5 | F E E E:.5 E:.5 | G G F D | C:4',ch:'C C C C F C G C'},
@@ -220,7 +220,7 @@ const INSTRUMENTS=[
  {id:'uke',n:'Ukulele',bench:'chords',set:['C','Am','F','G7','G','Em','Dm','D','A','Bm','E7','C7']},
  {id:'guitar',n:'Guitar',bench:'chords',set:['Em (easy)','G (easy)','C (easy)','Am (easy)','Em','Am','C','G','D','A','E','Dm','F','Bm']},
  {id:'piano',n:'Piano',bench:'keys',set:['C','G','F','Am','Dm','Em','D','A']},
- {id:'angklung',n:'Angklung and tuned percussion',bench:'bars'},
+ {id:'angklung',n:'Tuned percussion',bench:'bars'},
  {id:'voice',n:'Voice',bench:'echo'},
  {id:'drums',n:'Drums',bench:'kit'},
  {id:'band',n:'Rock band',bench:'band'}

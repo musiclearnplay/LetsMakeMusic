@@ -108,7 +108,14 @@ function drum(k,t,vel){
   else if(k==='click'||k==='click1'){osc('square',k==='click1'?1600:1000,t,t+.04,g);env(g,t,.001,vel*.25,.03);}
   else if(k==='chime'){[0,4,7,12].forEach((iv,i)=>play(72+iv,t+i*.12,1,'mallet',.5));}
 }
-function strum(c,t,dir,vel){const ms=chordMidis(c);const v=dir==='U'?ms.slice(1).reverse():[ms[0]-12,...ms,ms[0]+12];v.forEach((m,i)=>play(m,t+i*.014,.7,'pluck',(vel||.38)*(dir==='U'?.7:1)));}
+const GTR_TUNE=[40,45,50,55,59,64], UKE_TUNE=[67,60,64,69];
+function voiceChord(c,kind){
+  const key=c.split('/')[0], map=kind==='gtr'?GTR:UKE, tune=kind==='gtr'?GTR_TUNE:UKE_TUNE, sh=map[key]||map[key.replace(' (easy)','')];
+  if(!sh) return chordMidis(c);
+  const out=[]; sh.split('').forEach((ch,i)=>{ if(ch!=='x') out.push(tune[i]+(+ch)); });
+  return out.length?out:chordMidis(c);
+}
+function strum(c,t,dir,vel,kind){const ms=kind?voiceChord(c,kind):chordMidis(c);const v=kind?(dir==='U'?ms.slice().reverse():ms.slice()):(dir==='U'?ms.slice(1).reverse():[ms[0]-12,...ms,ms[0]+12]);v.forEach((m,i)=>play(m,t+i*.016,.7,'pluck',(vel||.38)*(dir==='U'?.7:1)));}
 
 /* ---------- scheduler: one loop at a time ---------- */
 let LOOP=null;
