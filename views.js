@@ -24,18 +24,17 @@ A.stop=()=>stopAll();
 /* ================= HOME ================= */
 function vHome(){
   const full=SONGS.filter(s=>s.kind==='mel').length, charts=SONGS.length-full;
-  return `<section class="hero"><h1>Learn what you want to, when you're ready</h1>
-  <p>Work at your own pace. Choose an instrument, tick off what you can do, then try the next thing.</p></section>
-  <div class="doors">
-    <button class="door d-practice" data-act="nav" data-v="practice"><b>Practice</b><span>Skill paths for ukulele, guitar, piano, tuned percussion, voice, drums and rock band.</span><em>7 instruments, 4 levels each</em></button>
-    <button class="door d-games" data-act="nav" data-v="games"><b>Games</b><span>Note Slide, Key Finder, Fill the Bar, Tap the Rhythm and more.</span><em>${GAMES.length} games</em></button>
-    <button class="door d-create" data-act="nav" data-v="create"><b>Create</b><span>Song Maker, Beat Maker, Chord Jam and Rhythm Builder.</span><em>4 music makers</em></button>
-    <button class="door d-tools" data-act="nav" data-v="tools"><b>Tools</b><span>Metronome, tuner, group maker and timer.</span><em>4 classroom tools</em></button>
-    <button class="door d-songs" data-act="nav" data-v="songs"><b>Songs</b><span>Tab, staff, numbers and solfège for ${full} pieces. Chord charts for ${charts} songs.</span><em>${SONGS.length} songs</em></button>
+  return `<div class="homehead"><h1>Learn what you want, when you want.</h1><p class="muted">Pick an instrument, or jump into a room. Work at your own pace.</p></div>
+  <div class="tilegrid rooms">
+    ${roomTile('practice','#0B8A63','Practice','Skill paths for every instrument')}
+    ${roomTile('games','#6B3FB5','Games',GAMES.length+' games to play')}
+    ${roomTile('create','#C2185B','Create','Make your own music')}
+    ${roomTile('tools','#2C4FE0','Tools','Metronome, tuner, timer and more')}
+    ${roomTile('songs','#9A5B00','Songs',full+' full pieces · '+charts+' chord charts')}
   </div>
-  <section class="card"><h2>Start with your instrument</h2><div class="row">${INSTRUMENTS.map(i=>chip(i.n,'inst',false,`data-id="${i.id}"`)).join('')}</div></section>
-  <section class="card"><h3>Want longer lessons?</h3><p class="muted">The Music Sandbox has step-by-step guitar, keyboard and drum lessons with quick checks.</p>
-  <div><a class="btn" style="display:inline-flex;align-items:center;text-decoration:none;color:var(--fg)" href="${SANDBOX_URL}" target="_blank" rel="noopener">Open the Music Sandbox</a></div></section>`;
+  <h2 class="sect">Start with your instrument</h2>
+  <div class="tilegrid insts">${INSTRUMENTS.map(i=>`<button class="tile inst" style="--tc:${INST_COLOR[i.id]}" data-act="inst" data-id="${i.id}"><span class="ico">${ART(INST_ICON[i.id])}</span><b>${esc(i.n)}</b></button>`).join('')}</div>
+  <section class="card plain"><div class="row" style="align-items:center;gap:14px"><div class="miniart" style="--tc:#5A6472">${ART('practice')}</div><div style="flex:1;min-width:200px"><h3>Want longer lessons?</h3><p class="muted small">The Music Sandbox has step-by-step guitar, keyboard and drum lessons with quick checks.</p></div><a class="btn" style="text-decoration:none;color:var(--fg)" href="${SANDBOX_URL}" target="_blank" rel="noopener">Open the Sandbox</a></div></section>`;
 }
 
 /* ================= PRACTICE ================= */
@@ -52,14 +51,15 @@ A.skill=el=>{
   else if(kind==='bench'){ if(a){ if(curInst().bench==='echo'){S.echo.lvl=+a;S.echo.pat=null;} else S.bench.chord=a; } render(); const b=$('#bench'); if(b) b.scrollIntoView({behavior:'smooth',block:'start'}); }
 };
 const curInst=()=>INSTRUMENTS.find(i=>i.id===S.inst)||INSTRUMENTS[0];
+const roomTile=(v,color,title,sub)=>`<button class="tile room" style="--tc:${color}" data-act="nav" data-v="${v}"><span class="ico">${ART(v)}</span><b>${title}</b><span class="sub">${sub}</span></button>`;
 function pathMeter(){
   const p=PATHS[S.inst], total=p.reduce((a,l)=>a+l.length,0), n=Object.keys(S.done).filter(k=>k.startsWith(S.inst+'.')).length;
   return `<div class="row" id="pathMeter"><div class="meter"><i style="width:${Math.round(n/total*100)}%"></i></div><span class="small muted">${n} of ${total} ticked</span></div>`;
 }
 function vPractice(){
   const inst=curInst(), path=PATHS[inst.id];
-  return `<div><span class="eyebrow">Practice</span><h2>${esc(inst.n)}</h2></div>
-  <div class="row">${INSTRUMENTS.map(i=>chip(i.n,'inst',i.id===inst.id,`data-id="${i.id}"`)).join('')}</div>
+  return `<div class="prac-head"><div class="miniart" style="--tc:${INST_COLOR[inst.id]}">${ART(INST_ICON[inst.id])}</div><div><span class="eyebrow">Practice</span><h2>${esc(inst.n)}</h2></div></div>
+  <div class="pickrow">${INSTRUMENTS.map(i=>`<button class="pick ${i.id===inst.id?'on':''}" style="--tc:${INST_COLOR[i.id]}" data-act="inst" data-id="${i.id}"><span class="ico">${ART(INST_ICON[i.id])}</span>${esc(i.n)}</button>`).join('')}</div>
   <section class="card" id="bench">${bench(inst)}</section>
   <section class="card"><h3>My path</h3><p class="muted small">Tick a box when you can do it three times in a row. Tap the link to practise it.</p>${pathMeter()}
   <div class="levels">${path.map((lv,li)=>`<div class="level"><h3>Level ${li+1}<span class="small muted">${['Starting out','Getting going','Playing songs','Leading'][li]}</span></h3>
@@ -174,7 +174,7 @@ function vSong(s){
     return head+`<section class="card"><div class="row"><button class="btn go" data-act="playMel">Play</button>${tempo}</div>
     <div class="row"><label class="ctl" for="snd">Sound</label><select class="field" id="snd" data-in="snd">${[['keys','Piano'],['mallet','Xylophone'],['angklung','Shaken'],['pluck','Guitar'],['synth','Synth']].map(o=>`<option value="${o[0]}" ${f.snd===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>
     ${s.ch?chip('Backing chords','tog',f.backing,'data-k="backing"'):''}${chip('Click','tog',f.click,'data-k="click"')}</div></section>
-    <section class="card"><div class="row">${MODES.map(m=>chip(m[1],'mode',m[0]===mode,`data-m="${m[0]}"`)).join('')}</div><div id="score">${melBody(s,mode)}</div></section>`;
+    <section class="card"><div class="row">${MODES.map(m=>chip(m[1],'mode',m[0]===mode,`data-m="${m[0]}"`)).join('')}</div><div id="score">${melBody(s,mode)}</div></section>`+melChordBlock(s);
   }
   const sh=f.shift, keys=[0,7,2,5,9], inst=['uke','gtr','piano'].includes(f.inst)?f.inst:'uke', st=STRUMS[s.strum], used=s.chords.map(c=>transChord(c,sh));
   let b=0;
@@ -186,6 +186,19 @@ function vSong(s){
   <section class="card"><div class="row"><h3>Chord shapes</h3>${chip('Ukulele','cinst',inst==='uke','data-i="uke"')}${chip('Guitar','cinst',inst==='gtr','data-i="gtr"')}${chip('Piano','cinst',inst==='piano','data-i="piano"')}</div>
   <div class="diagrams">${used.map(c=>`<button class="dg" data-act="hearC" data-c="${esc(c)}"><b>${esc(c)}</b>${chordDiagram(c,inst)}</button>`).join('')}</div></section>`;
 }
+function melChordBlock(s){
+  const inst=['uke','gtr','piano'].includes(S.songs.inst)?S.songs.inst:'uke';
+  const bars=s.ch.split(/\s+/).map(x=>x.split('_')), strumKey=(s.ts==='6/8'||s.meter===3)?'s6':'s3', st=STRUMS[strumKey], used=[...new Set(s.ch.split(/[\s_]+/))];
+  let b=0;
+  return `<section class="card"><div class="row"><h3 style="flex:1">Chords for the whole piece</h3><button class="btn go" data-act="playMelCh" data-s="${strumKey}">Play chords</button></div>
+  <div class="row">${chip('Drums','tog',S.songs.drums,'data-k="drums"')}</div>
+  <div class="bars">${bars.map(bar=>`<div class="barcell" data-b="${b++}">${bar.map(c=>`<span class="${pcClass(parseChord(c).L)}">${esc(c)}</span>`).join('')}</div>`).join('')}</div>
+  <div class="row"><span class="small muted">Strum: ${st.n}</span>${strumHtml(st.p)}</div>
+  <div class="row"><h3>Chord shapes</h3>${chip('Ukulele','cinst',inst==='uke','data-i="uke"')}${chip('Guitar','cinst',inst==='gtr','data-i="gtr"')}${chip('Piano','cinst',inst==='piano','data-i="piano"')}</div>
+  <div class="diagrams">${used.map(c=>`<button class="dg" data-act="hearC" data-c="${esc(c)}"><b>${esc(c)}</b>${chordDiagram(c,inst)}</button>`).join('')}</div>
+  <p class="small muted">Play the melody above, or strum these to back up a friend. Shown in the song's key.</p></section>`;
+}
+A.playMelCh=el=>{ if(LOOP){stopAll();return;} const s=songById(S.songs.open), bars=s.ch.split(/\s+/).map(x=>x.split('_')); playChart({secs:[['c',bars]],meter:s.meter,strum:el.dataset.s},{bpm:()=>S.songs.bpm,shift:0,drums:()=>S.songs.drums,click:()=>S.songs.click}); };
 function strumHtml(p){const cnt=p.length===6?['1','&','2','&','3','&']:['1','&','2','&','3','&','4','&'];return `<div class="strum">${p.split('').map((c,i)=>`<span>${c==='D'?'↓':c==='U'?'↑':'·'}<small>${cnt[i]}</small></span>`).join('')}</div>`;}
 function melBody(s,mode){
   if(mode==='staff') return `<div class="paper">${staffSvg(s,{names:true})}</div>`;
@@ -221,7 +234,7 @@ A.playMel=()=>{
 };
 function chartBars(s){const out=[];s.secs.forEach(sec=>sec[1].forEach(b=>out.push(b)));return out;}
 function playChart(s,o){ /* o: bpm(), shift, drums(), click(), root selector for bars */
-  const bars=chartBars(s), slots=s.meter===3?6:8, pat=STRUMS[s.strum].p;
+  const bars=chartBars(s), slots=s.meter===3?6:(s.meter===4?8:Math.max(2,Math.round(s.meter*2))), pat=STRUMS[s.strum].p;
   startLoop({steps:bars.length*slots,loop:true,dur:()=>60/o.bpm()/2,
     step:(i,t)=>{const bar=bars[Math.floor(i/slots)], k=i%slots, c=transChord(bar[Math.min(bar.length-1,Math.floor(k/(slots/bar.length)))],o.shift), d=pat[k%pat.length];
       if(d==='D'||d==='U') strum(c,t,d,.34);

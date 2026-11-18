@@ -76,18 +76,30 @@ const MELODIES=[
  {id:'row-row',t:'Row, Row, Row Your Boat',by:'Traditional',lvl:3,bpm:132,key:'C',meter:3,ts:'6/8',tags:'round canon',
   mel:'C:1.5 C:1.5 | C D:.5 E:1.5 | E D:.5 E F:.5 | G:3 | C5:.5 C5:.5 C5:.5 G:.5 G:.5 G:.5 | E:.5 E:.5 E:.5 C:.5 C:.5 C:.5 | G F:.5 E D:.5 | C:3',ch:'C C C C C C G C'},
  {id:'sakura',t:'Sakura, Sakura',by:'Traditional Japanese',lvl:3,bpm:84,key:'Am',tags:'world japan',
-  mel:'A A B:2 | A A B:2 | A B C5 B | A B:.5 A:.5 F:2 | E C E F | E E:.5 C:.5 B3:2 | A B C5 B | A B:.5 A:.5 F:2 | E C E F | E E:.5 C:.5 B3:2 | A A B:2 | A A B:2 | E F B:.5 A:.5 F | E:4'},
+  mel:'A A B:2 | A A B:2 | A B C5 B | A B:.5 A:.5 F:2 | E C E F | E E:.5 C:.5 B3:2 | A B C5 B | A B:.5 A:.5 F:2 | E C E F | E E:.5 C:.5 B3:2 | A A B:2 | A A B:2 | E F B:.5 A:.5 F | E:4',ch:'Am Am Am Dm Am E Am Dm Am E Am Am Dm_E Am'},
  {id:'mo-li-hua',t:'Mo Li Hua (Jasmine Flower)',by:'Traditional Chinese',lvl:4,bpm:76,key:'C',tags:'world china pentatonic',
-  mel:'E E:.5 G:.5 A:.5 C5:.5 C5:.5 A:.5 | G G:.5 A:.5 G:2 | E E:.5 G:.5 A:.5 C5:.5 C5:.5 A:.5 | G G:.5 A:.5 G:2 | G G G E:.5 G:.5 | A A G:2 | E D:.5 E:.5 G E:.5 D:.5 | C C:.5 D:.5 C:2 | E:.5 D:.5 C:.5 E:.5 D:1.5 E:.5 | G A:.5 C5:.5 G:2 | D E:.5 G:.5 D:.5 E:.5 C:.5 A3:.5 | G3:2 A3 C | D:1.5 E:.5 C:.5 D:.5 C:.5 A3:.5 | G3:4'},
+  mel:'E E:.5 G:.5 A:.5 C5:.5 C5:.5 A:.5 | G G:.5 A:.5 G:2 | E E:.5 G:.5 A:.5 C5:.5 C5:.5 A:.5 | G G:.5 A:.5 G:2 | G G G E:.5 G:.5 | A A G:2 | E D:.5 E:.5 G E:.5 D:.5 | C C:.5 D:.5 C:2 | E:.5 D:.5 C:.5 E:.5 D:1.5 E:.5 | G A:.5 C5:.5 G:2 | D E:.5 G:.5 D:.5 E:.5 C:.5 A3:.5 | G3:2 A3 C | D:1.5 E:.5 C:.5 D:.5 C:.5 A3:.5 | G3:4',ch:'C G C G C Am G C Am G G C G C'},
  {id:'minuet-g',t:'Minuet in G',by:'Christian Petzold',lvl:4,bpm:112,key:'G',meter:3,tags:'classical baroque',
   mel:'D5 G:.5 A:.5 B:.5 C5:.5 | D5 G G | E5 C5:.5 D5:.5 E5:.5 F#5:.5 | G5 G G | C5 D5:.5 C5:.5 B:.5 A:.5 | B C5:.5 B:.5 A:.5 G:.5 | F# G:.5 A:.5 B:.5 G:.5 | A:3',ch:'G G C G Am G D D'},
  {id:'greensleeves',t:'Greensleeves (A section)',by:'Traditional English',lvl:4,bpm:108,key:'Am',meter:3,pickup:1,tags:'minor folk',
   mel:'A | C5:2 D5 | E5:1.5 F5:.5 E5 | D5:2 B | G:1.5 A:.5 B | C5:2 A | A:1.5 G#:.5 A | B:2 G# | E:2 A | C5:2 D5 | E5:1.5 F5:.5 E5 | D5:2 B | G:1.5 A:.5 B | C5:1.5 B:.5 A | G#:1.5 F#:.5 G# | A:3 | A:2',
   ch:'Am Am G G Am Am E E Am Am G G Am E Am Am'},
  {id:'fur-elise',t:'Für Elise (opening)',by:'Ludwig van Beethoven',lvl:4,bpm:112,key:'Am',meter:1.5,ts:'3/8',pickup:.5+.5,tags:'classical piano',
-  mel:'E5:.5 D#5:.5 | E5:.5 D#5:.5 E5:.5 | B:.5 D5:.5 C5:.5 | A R:.5 | C:.5 E:.5 A:.5 | B R:.5 | E:.5 G#:.5 B:.5 | C5 R:.5 | E:.5 E5:.5 D#5:.5 | E5:.5 D#5:.5 E5:.5 | B:.5 D5:.5 C5:.5 | A R:.5 | C:.5 E:.5 A:.5 | B R:.5 | E:.5 C5:.5 B:.5 | A:1.5'},
+  mel:'E5:.5 D#5:.5 | E5:.5 D#5:.5 E5:.5 | B:.5 D5:.5 C5:.5 | A R:.5 | C:.5 E:.5 A:.5 | B R:.5 | E:.5 G#:.5 B:.5 | C5 R:.5 | E:.5 E5:.5 D#5:.5 | E5:.5 D#5:.5 E5:.5 | B:.5 D5:.5 C5:.5 | A R:.5 | C:.5 E:.5 A:.5 | B R:.5 | E:.5 C5:.5 B:.5 | A:1.5',ch:'Am Am Am Am E E Am Am Am Am Am Am E Am Am'},
  {id:'lullaby',t:'Lullaby',by:'Johannes Brahms',lvl:4,bpm:84,key:'C',meter:3,pickup:1,tags:'classical',
   mel:'E:.5 E:.5 | G:2 E:.5 E:.5 | G:2 E:.5 G:.5 | C5 B A | A G D:.5 E:.5 | F D D:.5 E:.5 | F:2 D:.5 F:.5 | B A G | B C5:2',ch:'C C C G G G G C'},
+ {id:'beethoven5',t:"Beethoven's Fifth (motif)",by:'Ludwig van Beethoven',lvl:2,bpm:108,key:'Cm',tags:'classical motif',
+  mel:'R:.5 G:.5 G:.5 G:.5 Eb:2 | R:.5 F:.5 F:.5 F:.5 D:2',ch:'Cm Cm'},
+ {id:'pachelbel',t:"Pachelbel's Canon (theme)",by:'Johann Pachelbel',lvl:4,bpm:96,key:'D',tags:'classical baroque',
+  mel:'F#5:2 E5:2 | D5:2 C#5:2 | B:2 A:2 | B:2 C#5:2',ch:'D A Bm F#m'},
+ {id:'three-blind-mice',t:'Three Blind Mice',by:'Traditional English',lvl:1,bpm:116,key:'C',tags:'round canon mi re do',
+  mel:'E D C:2 | E D C:2 | G F E:2 | G F E:2',ch:'C C G7 C'},
+ {id:'pentatonic-playground',t:'Pentatonic Playground',by:'Original for LetsMakeMusic',tier:'orig',lvl:2,bpm:112,key:'C',tags:'pentatonic',
+  mel:'C D E G | A G E:2 | G A C5 A | G E D:2 | C D E G | A G E:2 | D E G A | C:4',ch:'C C Am Am C C G C'},
+ {id:'minor-walk',t:'Minor Walk',by:'Original for LetsMakeMusic',tier:'orig',lvl:3,bpm:100,key:'Am',tags:'minor',
+  mel:'A3 B3 C D | E:2 E:2 | F E D C | B3:2 E:2 | A3 B3 C D | E:2 A:2 | G F E D | A3:4',ch:'Am Em F E7 Am C Dm Am'},
+ {id:'waltz-in-c',t:'Waltz in C',by:'Original for LetsMakeMusic',tier:'orig',lvl:2,bpm:120,key:'C',meter:3,tags:'waltz three',
+  mel:'C E G | G E C | D F A | A F D | C E G | C5 G E | D G B3 | C:3',ch:'C C F F C C G7 C'},
 ];
 
 /* ---------- Chord charts: no lyrics, no melody. Stored in an easy key. ---------- */
@@ -99,7 +111,25 @@ Burung Kakak Tua|Traditional Indonesian|C|120|s6|All:C C G7 G7 G7 G7 C C|3
 12-Bar Blues in A|Blues form|A|108|s2|All:A A A A D D A A E D A A
 One-Chord Jam|LetsMakeMusic warm-up|C|100|s1|All:C C C C
 The Four-Chord Loop|LetsMakeMusic warm-up|C|96|s3|All:C G Am F
-The Doo-Wop Loop|LetsMakeMusic warm-up|C|100|s2|All:C Am F G`;
+The Doo-Wop Loop|LetsMakeMusic warm-up|C|100|s2|All:C Am F G
+Home on the Range|Traditional American|C|100|s6|All:C C F C C C D7 G C C F C G C G C|3
+Red River Valley|Traditional American|C|108|s2|All:C C G G C F C G C
+My Bonnie Lies Over the Ocean|Traditional|C|120|s6|All:C C F Am G C F G C|3
+Clementine|Traditional American|C|112|s6|All:C C G C C C G C C|3
+Camptown Races|Stephen Foster|C|128|s2|All:C C G C C C G C
+Buffalo Gals|Traditional|C|120|s2|All:C C G C C C G C
+Swing Low, Sweet Chariot|Traditional spiritual|C|76|s1|All:C F C C C G C C F C G C
+This Little Light of Mine|Traditional|C|104|s5|All:C C C G C C G C
+He's Got the Whole World|Traditional|C|100|s2|All:C C G G C C G C
+Down by the Riverside|Traditional spiritual|C|112|s2|All:C C G G C C G C
+Kumbaya|Traditional|C|72|s1|All:C F C C C G C
+Michael, Row the Boat Ashore|Traditional spiritual|C|92|s1|All:C C Em Em C C G C
+Auld Lang Syne|Traditional Scottish|C|92|s2|All:C F C F C Am Dm G C
+Scarborough Fair|Traditional English|Am|96|s6|All:Am Am C Am Am G Am Am|3
+Molly Malone|Traditional Irish|C|108|s6|All:C Am Dm G C Am G C|3
+Shenandoah|Traditional American|C|72|s1|All:C F C Am C F G C
+Cielito Lindo|Traditional Mexican|C|132|s6|All:C C G G C C G C|3
+Guantanamera|Traditional Cuban|C|108|s2|All:C F G C F G`;
 const POP_CHARTS=`Let It Be|The Beatles|C|72|s1|Verse:C G Am F C G F C;Chorus:Am G F C C G F C
 I'm Yours|Jason Mraz|C|76|s3|All:C G Am F
 Riptide|Vance Joy|Am|100|s3|Verse:Am G C C;Bridge:Am G C F
@@ -197,7 +227,37 @@ Don't Worry, Be Happy|Bobby McFerrin|C|69|s5|All:C C Dm Dm F F C C
 Jambalaya|Hank Williams|C|112|s2|All:C C G7 G7 G7 G7 C C
 Achy Breaky Heart|Billy Ray Cyrus|C|120|s2|All:C C C C G G G G
 Eye of the Tiger|Survivor|Am|109|s4|Verse:Am F G Am;Chorus:Dm C G G
-Best Day of My Life|American Authors|C|100|s4|All:C C F F`;
+Best Day of My Life|American Authors|C|100|s4|All:C C F F
+Mr. Brightside|The Killers|C|148|s4|All:C Am F G
+Chasing Cars|Snow Patrol|C|104|s1|All:C G Am F
+Fix You|Coldplay|C|138|s1|Verse:C Em Am F;Chorus:C G F C
+Paradise|Coldplay|C|140|s4|All:F Am C G
+Believer|Imagine Dragons|Am|125|s2|All:Am C F G
+Thunder|Imagine Dragons|C|168|s2|All:C G Am F
+On Top of the World|Imagine Dragons|C|118|s4|All:C F C G
+Rather Be|Clean Bandit|C|121|s4|All:C Em Am G
+What Makes You Beautiful|One Direction|C|125|s4|All:C F C G
+Story of My Life|One Direction|C|121|s3|All:C G Am F
+Sugar|Maroon 5|C|120|s4|All:C Am Dm G
+She Will Be Loved|Maroon 5|C|104|s3|All:C G Am F
+Africa|Toto|C|93|s2|All:C Am F G
+Take It Easy|Eagles|G|138|s2|All:G C G D C G
+Wonderful Tonight|Eric Clapton|G|96|s2|All:G D C D
+Let Her Go|Passenger|C|75|s1|Verse:Em C G D;Chorus:C G D Em
+7 Years|Lukas Graham|C|80|s1|All:C Em Am F
+Love Yourself|Justin Bieber|C|100|s2|All:C G Am F
+Despacito|Luis Fonsi and Daddy Yankee|Am|89|s2|All:Am F C G
+Banana Pancakes|Jack Johnson|C|92|s3|All:C G Am F
+Better Together|Jack Johnson|C|120|s3|All:C F Am G
+I Won't Give Up|Jason Mraz|C|70|s1|All:C G Am F
+Hey There Delilah|Plain White T's|C|104|s1|All:C Em C Em
+Sunday Morning|Maroon 5|C|96|s3|All:C G Am F
+Bad Habits|Ed Sheeran|Am|126|s4|All:Am F C G
+Happier|Marshmello and Bastille|C|100|s2|All:C G Am F
+Stay|The Kid LAROI and Justin Bieber|C|170|s2|All:C G Am F
+Ophelia|The Lumineers|C|119|s2|All:C F C G
+Hey Brother|Avicii|Am|125|s2|All:Am F C G
+The Nights|Avicii|C|126|s4|All:C F G C`;
 
 const STRUMS={
  s1:{n:'Four downs',p:'D-D-D-D-'},

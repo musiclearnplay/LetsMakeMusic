@@ -1,0 +1,20 @@
+/* LetsMakeMusic art: flat line illustrations, Chrome Music Lab style. White on colour tiles via currentColor. */
+'use strict';
+const ICONS={
+ uke:`<path d="M58 50c-16 0-24 12-22 27 1 13 11 23 22 23s21-10 22-23c2-15-6-27-22-27z"/><circle cx="58" cy="85" r="7" fill="currentColor" stroke="none"/><path d="M58 50V23"/><rect x="50" y="9" width="16" height="14" rx="3"/><circle cx="54" cy="13" r="1.6" fill="currentColor" stroke="none"/><circle cx="62" cy="13" r="1.6" fill="currentColor" stroke="none"/>`,
+ guitar:`<path d="M60 56c-20 0-29 15-27 33 2 15 13 27 27 27s25-12 27-27c2-18-7-33-27-33z"/><circle cx="60" cy="92" r="9" fill="currentColor" stroke="none"/><path d="M60 56V16"/><rect x="51" y="4" width="18" height="12" rx="3"/><path d="M54 72h12"/>`,
+ piano:`<rect x="18" y="40" width="84" height="46" rx="6"/><path d="M36 40V86M54 40V86M72 40V86M90 40V86"/><rect x="30" y="40" width="9" height="27" rx="2" fill="currentColor" stroke="none"/><rect x="48" y="40" width="9" height="27" rx="2" fill="currentColor" stroke="none"/><rect x="66" y="40" width="9" height="27" rx="2" fill="currentColor" stroke="none"/><rect x="84" y="40" width="9" height="27" rx="2" fill="currentColor" stroke="none"/>`,
+ drums:`<ellipse cx="60" cy="52" rx="32" ry="11"/><path d="M28 52v20a32 11 0 0 0 64 0V52"/><path d="M28 54l9 20M44 50l5 25M60 48v27M76 50l-5 25M92 54l-9 20"/><path d="M46 40L26 15M58 38L82 15"/><circle cx="26" cy="15" r="4" fill="currentColor" stroke="none"/><circle cx="82" cy="15" r="4" fill="currentColor" stroke="none"/>`,
+ voice:`<rect x="47" y="18" width="26" height="42" rx="13"/><path d="M35 52a25 25 0 0 0 50 0"/><path d="M60 77V98"/><path d="M43 98h34"/><path d="M20 40q6-8 0-16M100 40q-6-8 0-16"/>`,
+ tuned:`<rect x="22" y="36" width="78" height="10" rx="5" fill="currentColor" stroke="none"/><rect x="24" y="52" width="70" height="10" rx="5" fill="currentColor" stroke="none"/><rect x="26" y="68" width="62" height="10" rx="5" fill="currentColor" stroke="none"/><rect x="28" y="84" width="54" height="10" rx="5" fill="currentColor" stroke="none"/><path d="M96 30L104 96"/><circle cx="96" cy="30" r="6" fill="currentColor" stroke="none"/>`,
+ band:`<path d="M60 18l10 21 23 2-17 15 5 23-21-12-21 12 5-23-17-15 23-2z" fill="currentColor" stroke="none"/><circle cx="30" cy="92" r="7"/><path d="M37 92V66l18-4v22"/><path d="M55 84a7 7 0 1 0 14 0 7 7 0 1 0-14 0" fill="none"/>`,
+ practice:`<circle cx="60" cy="60" r="36"/><circle cx="60" cy="60" r="22"/><circle cx="60" cy="60" r="8" fill="currentColor" stroke="none"/>`,
+ games:`<rect x="18" y="44" width="84" height="42" rx="21"/><path d="M38 56v16M30 64h16"/><circle cx="80" cy="60" r="5" fill="currentColor" stroke="none"/><circle cx="90" cy="72" r="5" fill="currentColor" stroke="none"/><circle cx="70" cy="72" r="5" fill="currentColor" stroke="none"/>`,
+ create:`<path d="M32 88L74 46l14 14-42 42-18 4z"/><path d="M66 54l14 14"/><path d="M36 84l8 8"/>`,
+ tools:`<path d="M48 26h24l12 66H36z"/><path d="M42 76h36"/><path d="M60 86L74 40"/><circle cx="71" cy="52" r="4" fill="currentColor" stroke="none"/>`,
+ songs:`<path d="M50 32V78"/><path d="M84 26V72"/><path d="M50 32L84 26"/><path d="M50 42L84 36"/><ellipse cx="43" cy="80" rx="9" ry="7" fill="currentColor" stroke="none"/><ellipse cx="77" cy="74" rx="9" ry="7" fill="currentColor" stroke="none"/>`,
+ note:`<path d="M54 30v44"/><path d="M54 30l26-6v40" fill="none"/><ellipse cx="47" cy="76" rx="9" ry="7" fill="currentColor" stroke="none"/><ellipse cx="73" cy="70" rx="9" ry="7" fill="currentColor" stroke="none"/>`
+};
+function ART(name){return `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="ico-svg" aria-hidden="true">${ICONS[name]||ICONS.note}</svg>`;}
+const INST_ICON={uke:'uke',guitar:'guitar',piano:'piano',angklung:'tuned',voice:'voice',drums:'drums',band:'band'};
+const INST_COLOR={uke:'#E0701A',guitar:'#D1343B',piano:'#2C4FE0',angklung:'#0C8F88',voice:'#C2185B',drums:'#6B3FB5',band:'#1F7A4D'};
